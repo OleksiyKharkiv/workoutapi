@@ -1,9 +1,9 @@
-package workoutapi.controller
+package org.example.workoutapi.controller
 
+import org.example.workoutapi.model.UserWorkout
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.format.annotation.DateTimeFormat
 import org.springframework.web.bind.annotation.*
-import org.example.workoutapi.model.UserWorkout
 import org.example.workoutapi.service.UserWorkoutService
 import java.time.LocalDateTime
 

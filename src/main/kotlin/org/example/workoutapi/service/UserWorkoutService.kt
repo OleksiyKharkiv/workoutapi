@@ -1,4 +1,4 @@
-package workoutapi.service
+package org.example.workoutapi.service
 
 import org.example.workoutapi.model.UserWorkout
 import org.example.workoutapi.repository.UserWorkoutRepository
@@ -25,7 +25,7 @@ class UserWorkoutService {
     }
 
     fun updateUserWorkout(id: String, userWorkout: UserWorkout): UserWorkout {
-        val existingUserWorkout = userWorkoutRepository.findById(id)
+        var existingUserWorkout = userWorkoutRepository.findById(id)
             .orElseThrow { NoSuchElementException("User workout with id $id not found") }
         // Update fields of existingUserWorkout with data from userWorkout
         // For example:

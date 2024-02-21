@@ -11,8 +11,8 @@ data class UserWorkout(
     @Id
     val id: String? = null,
     @Indexed
-    val activityType: String,
-    val hashtags: List<String>,
+    var activityType: String,
+    var hashtags: List<String>,
     @Indexed
     val metricTypeId: String,
     @Indexed
