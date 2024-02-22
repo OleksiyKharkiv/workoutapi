@@ -39,8 +39,16 @@ dependencies {
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-    implementation("io.springfox:springfox-swagger2:3.0.0")
-    implementation("io.springfox:springfox-boot-starter:3.0.0")
+//    implementation("io.springfox:springfox-swagger2:3.0.0")
+//    implementation("io.springfox:springfox-boot-starter:3.0.0")
+    // https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations
+//    implementation("io.swagger.core.v3:swagger-annotations:2.2.20")
+//    implementation("org.springdoc:springdoc-openapi-data-rest:1.6.0")
+//    implementation("org.springdoc:springdoc-openapi-ui:1.6.0")
+//    implementation("org.springdoc:springdoc-openapi-kotlin:1.6.0")
+    // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
+
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
