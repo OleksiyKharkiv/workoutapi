@@ -17,12 +17,17 @@ class UserService {
     @Autowired
     lateinit var userWorkoutRepository: UserWorkoutRepository
 
-    fun getUserById(id: String): User {
-        return userRepository.findById(id).orElseThrow { NoSuchElementException("User with id $id not found") }
+    fun getUserById(id: String): User? {
+        return userRepository.findByUserId(id)
     }
 
-    fun getUserPlannedWorkoutsByTimeInterval(userId: String, startDateTime: LocalDateTime, endDateTime: LocalDateTime): List<UserWorkout> {
-        val userWorkouts = userWorkoutRepository.findPlannedUserWorkouts(userId, startDateTime, endDateTime)
-        return userWorkouts.sortedBy { it.startDate }
+    fun getUserAndWorkoutsByTimeInterval(
+        userId: String,
+        startDateTime: LocalDateTime,
+        endDateTime: LocalDateTime
+    ): Pair<User, List<UserWorkout>>? {
+        val user = userRepository.findById(userId).orElse(null)
+        val workouts = userWorkoutRepository.findUserWorkoutsByTimeInterval(userId, startDateTime, endDateTime)
+        return if (user != null) Pair(user, workouts) else null
     }
 }
