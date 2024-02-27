@@ -58,14 +58,12 @@ dependencies {
     testImplementation("org.springframework.batch:spring-batch-test")
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
 }
-
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs += "-Xjsr305=strict"
         jvmTarget = "17"
     }
 }
-
 tasks.withType<Test> {
     useJUnitPlatform()
 }
