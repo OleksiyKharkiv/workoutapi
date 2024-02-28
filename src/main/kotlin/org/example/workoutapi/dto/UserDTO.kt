@@ -1,13 +1,9 @@
-package org.example.workoutapi.model
+package org.example.workoutapi.dto
 
-import org.springframework.data.annotation.Id
-import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
 
-@Document(collection = "users")
-data class User(
-    @Id
-    val id: String? = null,
+data class UserDTO(
+    val id: String?,
     val userId: String,
     val language: String,
     val birthday: String,
