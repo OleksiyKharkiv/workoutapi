@@ -31,5 +31,4 @@ data class UserDTO(
     val shopLastAbo: String,
     val usageOfDiagnosticFree: Int,
     val usageOfDiagnosticPaid: Int,
-    val wahoo: String,
 )

@@ -27,7 +27,7 @@ class UserService {
         endDateTime: LocalDateTime
     ): Pair<User, List<UserWorkout>>? {
         val user = userRepository.findById(userId).orElse(null)
-        val workouts = userWorkoutRepository.findUserWorkoutsByTimeInterval(userId, startDateTime, endDateTime)
+        val workouts = userRepository.findUserAndWorkoutsByTimeInterval(userId, startDateTime, endDateTime)
         return if (user != null) Pair(user, workouts) else null
     }
 }
