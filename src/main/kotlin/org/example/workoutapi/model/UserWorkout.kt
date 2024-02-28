@@ -13,12 +13,12 @@ data class UserWorkout(
     @Indexed
     val userId: String,
     @Indexed
-    val workoutType: String,
+    var workoutType: String,
     @Indexed
     val startDate: Long,
     val duration: Long, // Предполагается, что это длительность тренировки в миллисекундах
     val metricValue: String,
-    val hashtags: List<String>,
+    var hashtags: List<String>,
     val createdBy: String,
     val created: Any, // Предполагается, что это объект, содержащий информацию о создании
     val segments: List<Any>, // Предполагается, что это список сегментов тренировки

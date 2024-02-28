@@ -25,11 +25,11 @@ class UserWorkoutService {
     }
 
     fun updateUserWorkout(id: String, userWorkout: UserWorkout): UserWorkout {
-        var existingUserWorkout = userWorkoutRepository.findById(id)
+        val existingUserWorkout = userWorkoutRepository.findById(id)
             .orElseThrow { NoSuchElementException("User workout with id $id not found") }
         // Update fields of existingUserWorkout with data from userWorkout
         // For example:
-        existingUserWorkout.activityType = userWorkout.activityType
+        existingUserWorkout.workoutType = userWorkout.workoutType
         existingUserWorkout.hashtags = userWorkout.hashtags
         // Update other fields similarly
 

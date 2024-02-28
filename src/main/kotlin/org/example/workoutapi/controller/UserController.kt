@@ -1,5 +1,7 @@
 package org.example.workoutapi.controller
 
+import org.example.workoutapi.dto.UserDTO
+import org.example.workoutapi.mapper.UserMapper
 import org.example.workoutapi.model.User
 import org.example.workoutapi.model.UserWorkout
 import org.example.workoutapi.service.UserService
@@ -16,10 +18,14 @@ class UserController {
     @Autowired
     lateinit var userService: UserService
 
-    @GetMapping("/{id}")
-    fun getUserById(@PathVariable id: String): ResponseEntity<User> {
-        val user = userService.getUserById(id)
-        return ResponseEntity.ok(user)
+    @GetMapping("/{userId}")
+    fun getUserById(@PathVariable userId: String): ResponseEntity<UserDTO> {
+        val user = userService.getUserById(userId)
+        return if (user != null) {
+            ResponseEntity.ok(UserMapper.toDto(user))
+        } else {
+            ResponseEntity.notFound().build()
+        }
     }
 
 
