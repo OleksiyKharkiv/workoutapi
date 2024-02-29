@@ -3,7 +3,9 @@ package org.example.workoutapi.service
 import org.example.workoutapi.model.UserWorkout
 import org.example.workoutapi.repository.UserWorkoutRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
 import org.springframework.stereotype.Service
+import org.springframework.data.domain.Pageable
 import java.time.LocalDateTime
 
 @Service
@@ -11,12 +13,20 @@ class UserWorkoutService {
 
     @Autowired
     lateinit var userWorkoutRepository: UserWorkoutRepository
-
-    fun getUserWorkoutById(id: String): UserWorkout {
-        return userWorkoutRepository.findById(id).orElseThrow { NoSuchElementException("User workout with id $id not found") }
+    fun getAllUserWorkout(pageable: Pageable): Page<UserWorkout> {
+        return userWorkoutRepository.findAll(pageable)
     }
 
-    fun getUserWorkoutsByTimeInterval(userId: String, startDateTime: LocalDateTime, endDateTime: LocalDateTime): List<UserWorkout> {
+    fun getUserWorkoutById(id: String): UserWorkout {
+        return userWorkoutRepository.findById(id)
+            .orElseThrow { NoSuchElementException("User workout with id $id not found") }
+    }
+
+    fun getUserWorkoutsByTimeInterval(
+        userId: String,
+        startDateTime: LocalDateTime,
+        endDateTime: LocalDateTime
+    ): List<UserWorkout> {
         return userWorkoutRepository.findUserWorkoutsByTimeInterval(userId, startDateTime, endDateTime)
     }
 
@@ -42,7 +52,11 @@ class UserWorkoutService {
         userWorkoutRepository.delete(existingUserWorkout)
     }
 
-    fun getPlannedUserWorkouts(userId: String, startDateTime: LocalDateTime, endDateTime: LocalDateTime): List<UserWorkout> {
+    fun getPlannedUserWorkouts(
+        userId: String,
+        startDateTime: LocalDateTime,
+        endDateTime: LocalDateTime
+    ): List<UserWorkout> {
         return userWorkoutRepository.findPlannedUserWorkouts(userId, startDateTime, endDateTime)
     }
 }

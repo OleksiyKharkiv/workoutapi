@@ -14,6 +14,9 @@ class UserService {
 
     @Autowired
     lateinit var userRepository: UserRepository
+    fun getAllUsers(): MutableList<User> {
+        return userRepository.findAll()
+    }
 
     fun getUserById(id: String): User? {
         logger?.info("Fetching user by id: {}", id)

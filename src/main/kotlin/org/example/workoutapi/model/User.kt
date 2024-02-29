@@ -1,11 +1,18 @@
 package org.example.workoutapi.model
 
+import lombok.AllArgsConstructor
+import lombok.Builder
+import lombok.Data
+import lombok.NoArgsConstructor
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.index.Indexed
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.data.mongodb.core.mapping.Field
 import java.time.LocalDateTime
-
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Document(collection = "users")
 data class User(
     @Id
@@ -35,9 +42,10 @@ data class User(
     @Indexed
     val aboType: String,
 
+    @Builder.Default
     @Field("isPremiumPaid")
     @Indexed
-    val isPremiumPaid: Boolean,
+    val isPremiumPaid: Boolean = false,
 
     @Field("connectedCoachUserId")
     val connectedCoachUserId: String?,
@@ -51,7 +59,7 @@ data class User(
 
     @Field("workoutActivitiesCount")
     @Indexed
-    val workoutActivitiesCount: Int,
+    val workoutActivitiesCount: Int=0,
 
     @Field("sportTypes")
     @Indexed
@@ -99,8 +107,8 @@ data class User(
     val shopLastAbo: String,
 
     @Field("usageOfDiagnosticFree")
-    val usageOfDiagnosticFree: Int,
+    val usageOfDiagnosticFree: Int = 0,
 
     @Field("usageOfDiagnosticPaid")
-    val usageOfDiagnosticPaid: Int,
+    val usageOfDiagnosticPaid: Int = 0,
 )

@@ -12,6 +12,6 @@ interface UserRepository : MongoRepository<User, String> {
     // Найти пользователя по его идентификатору
     fun findByUserId(userId: String): User?
 
-    @Query("{'_id': ?0, 'userWorkouts.startDate': {\$gte: ?1, \$lte: ?2}}")
-    fun findUserAndWorkoutsByTimeInterval(id: String, startDateTime: LocalDateTime, endDateTime: LocalDateTime): List<UserWorkout>
+    @Query("{'userId': ?0, 'userWorkouts.startDate': {\$gte: ?1, \$lte: ?2}}")
+    fun findUserAndWorkoutsByTimeInterval(userId: String, startDateTime: LocalDateTime, endDateTime: LocalDateTime): List<UserWorkout>
 }

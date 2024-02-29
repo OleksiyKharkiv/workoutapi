@@ -1,10 +1,15 @@
 package org.example.workoutapi.controller
 
 import org.example.workoutapi.model.UserWorkout
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.format.annotation.DateTimeFormat
-import org.springframework.web.bind.annotation.*
 import org.example.workoutapi.service.UserWorkoutService
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
+import org.springframework.format.annotation.DateTimeFormat
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
+import org.springframework.data.domain.Pageable
 import java.time.LocalDateTime
 
 @RestController
@@ -13,7 +18,13 @@ class UserWorkoutController {
 
     @Autowired
     lateinit var userWorkoutService: UserWorkoutService
-
+    @GetMapping("/all")
+    fun getAllUserWorkout(@RequestParam(defaultValue = "0") page: Int,
+                          @RequestParam(defaultValue = "20") size: Int): ResponseEntity<Page<UserWorkout>> {
+        val pageable: Pageable = PageRequest.of(page, size)
+        val users = userWorkoutService.getAllUserWorkout(pageable)
+        return ResponseEntity(users, HttpStatus.OK)
+    }
     @GetMapping("/{id}")
     fun getUserWorkoutById(@PathVariable id: String): UserWorkout {
         return userWorkoutService.getUserWorkoutById(id)
