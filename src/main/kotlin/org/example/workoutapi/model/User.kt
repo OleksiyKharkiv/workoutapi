@@ -24,91 +24,77 @@ data class User(
 
     @Field("language")
     @Indexed
-    val language: String,
+    val language: String?,
 
     @Field("birthday")
     @Indexed
-    val birthday: String,
+    val birthday: LocalDateTime?,
 
     @Field("gender")
     @Indexed
-    val gender: String,
+    val gender: String?,
 
     @Field("accountType")
     @Indexed
-    val accountType: String,
+    val accountType: String?,
 
     @Field("aboType")
     @Indexed
     val aboType: String,
 
-    @Builder.Default
     @Field("isPremiumPaid")
     @Indexed
-    val isPremiumPaid: Boolean = false,
+    val isPremiumPaid: Boolean,
 
     @Field("connectedCoachUserId")
-    val connectedCoachUserId: String?,
+    val connectedCoachUserId: String? = null,
 
     @Field("connectedCoachName")
-    val connectedCoachName: String?,
+    val connectedCoachName: String? = null,
 
     @Field("dateTimeRegisterComplete")
-    @Indexed
-    val dateTimeRegisterComplete: LocalDateTime,
+    val dateTimeRegisterComplete: LocalDateTime? = null,
 
     @Field("workoutActivitiesCount")
     @Indexed
-    val workoutActivitiesCount: Int=0,
-
-    @Field("sportTypes")
-    @Indexed
-    val sportTypes: List<String>,
+    val workoutActivitiesCount: Int = 0,
 
     @Field("dateTimeRegisterStart")
     val dateTimeRegisterStart: LocalDateTime,
 
     @Field("dateFirstAboStart")
-    val dateFirstAboStart: LocalDateTime,
+    val dateFirstAboStart: LocalDateTime? = null,
 
     @Field("dateLastAboStart")
-    val dateLastAboStart: LocalDateTime,
+    val dateLastAboStart: LocalDateTime? = null,
 
     @Field("endOfFreeTrialPeriod")
-    val endOfFreeTrialPeriod: LocalDateTime,
+    val endOfFreeTrialPeriod: LocalDateTime? = null,
 
     @Field("firstAboSubscriptionPlan")
-    val firstAboSubscriptionPlan: String,
+    val firstAboSubscriptionPlan: String? = null,
 
     @Field("firstAboVendor")
-    val firstAboVendor: String,
+    val firstAboVendor: String? = null,
 
     @Field("lastAboSubscriptionPlan")
-    val lastAboSubscriptionPlan: String,
+    val lastAboSubscriptionPlan: String? = null,
 
     @Field("lastAboVendor")
-    val lastAboVendor: String,
+    val lastAboVendor: String? = null,
 
     @Field("newsletterOptInStatus")
-    val newsletterOptInStatus: String,
+    val newsletterOptInStatus: String? = null,
 
     @Field("premiumPaid")
-    @Indexed
-    val premiumPaid: String,
+    val premiumPaid: String? = null,
 
     @Field("premiumTrial")
-    @Indexed
-    val premiumTrial: String,
+    val premiumTrial: String? = null,
 
     @Field("pushMessagesON")
-    val pushMessagesON: String,
+    val pushMessagesON: String? = null,
 
     @Field("shopLastAbo")
-    val shopLastAbo: String,
-
-    @Field("usageOfDiagnosticFree")
-    val usageOfDiagnosticFree: Int = 0,
-
-    @Field("usageOfDiagnosticPaid")
-    val usageOfDiagnosticPaid: Int = 0,
+    val shopLastAbo: String? = null
 )

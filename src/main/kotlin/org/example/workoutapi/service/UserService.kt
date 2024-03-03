@@ -5,6 +5,8 @@ import org.example.workoutapi.model.UserWorkout
 import org.example.workoutapi.repository.UserRepository
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
@@ -14,8 +16,8 @@ class UserService {
 
     @Autowired
     lateinit var userRepository: UserRepository
-    fun getAllUsers(): MutableList<User> {
-        return userRepository.findAll()
+    fun getAllUsers(pageable: Pageable): Page<User> {
+        return userRepository.findAll(pageable)
     }
 
     fun getUserById(id: String): User? {
