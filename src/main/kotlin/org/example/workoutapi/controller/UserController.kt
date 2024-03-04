@@ -21,9 +21,12 @@ class UserController {
 
     @Autowired
     lateinit var userService: UserService
+
     @GetMapping("/all")
-    fun getAllUserWorkout(@RequestParam(defaultValue = "0") page: Int,
-                          @RequestParam(defaultValue = "20") size: Int): ResponseEntity<Page<User>> {
+    fun getAllUserWorkout(
+        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "20") size: Int
+    ): ResponseEntity<Page<User>> {
         val pageable: Pageable = PageRequest.of(page, size)
         val users = userService.getAllUsers(pageable)
         return ResponseEntity(users, HttpStatus.OK)
