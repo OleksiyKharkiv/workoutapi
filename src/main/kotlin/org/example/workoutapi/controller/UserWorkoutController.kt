@@ -18,13 +18,17 @@ class UserWorkoutController {
 
     @Autowired
     lateinit var userWorkoutService: UserWorkoutService
+
     @GetMapping("/all")
-    fun getAllUserWorkout(@RequestParam(defaultValue = "0") page: Int,
-                          @RequestParam(defaultValue = "20") size: Int): ResponseEntity<Page<UserWorkout>> {
+    fun getAllUserWorkout(
+        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "20") size: Int
+    ): ResponseEntity<Page<UserWorkout>> {
         val pageable: Pageable = PageRequest.of(page, size)
         val users = userWorkoutService.getAllUserWorkout(pageable)
         return ResponseEntity(users, HttpStatus.OK)
     }
+
     @GetMapping("/{id}")
     fun getUserWorkoutById(@PathVariable id: String): UserWorkout {
         return userWorkoutService.getUserWorkoutById(id)
