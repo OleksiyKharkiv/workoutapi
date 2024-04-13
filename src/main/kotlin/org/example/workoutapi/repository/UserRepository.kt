@@ -22,5 +22,4 @@ interface UserRepository : MongoRepository<User, String> {
         startDateTime: LocalDateTime,
         endDateTime: LocalDateTime
     ): List<UserWorkout>
-
 }
