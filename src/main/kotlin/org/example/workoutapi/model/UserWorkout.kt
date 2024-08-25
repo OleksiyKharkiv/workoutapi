@@ -37,7 +37,7 @@ data class UserWorkout(
 )
 
 data class Duration(
-    val time: Long =0,
+    val time: Long = 0,
     val distance: Double?,
     val distanceType: String?
 )
